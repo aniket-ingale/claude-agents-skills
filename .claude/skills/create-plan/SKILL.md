@@ -48,43 +48,39 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 ### Task N: [Component Name]
 
 **Files:**
-- Create: `exact/path/to/file.go`
-- Modify: `exact/path/to/existing.go:123-145`
-- Test: `tests/exact/path/to/test.go`
+- Create: `exact/path/to/file.py`
+- Modify: `exact/path/to/existing.py:123-145`
+- Test: `tests/exact/path/to/test.py`
 
 **Step 1: Write the failing test**
 
-```go
-func TestSpecificBehavior(t *testing.T) {
-    result := Function(input)
-    if result != expected {
-        t.Errorf("Expected %v, got %v", expected, result)
-    }
-}
+```python
+def test_specific_behavior():
+    result = function(input)
+    assert result == expected
 ```
 
 **Step 2: Run test to verify it fails**
 
-Run: `go test tests/path/test.go -v`
+Run: `python -m pytest tests/path/test.py -v`
 Expected: FAIL with "function not defined"
 
 **Step 3: Write minimal implementation**
 
-```go
-func Function(input interface{}) interface{} {
+```python
+def function(input):
     return expected
-}
 ```
 
 **Step 4: Run test to verify it passes**
 
-Run: `go test tests/path/test.go -v`
+Run: `python -m pytest tests/path/test.py -v`
 Expected: PASS
 
 **Step 5: Commit**
 
 ```bash
-git add tests/path/test.go src/path/file.go
+git add tests/path/test.py src/path/file.py
 git commit -m "feat: add specific feature"
 ```
 ```
